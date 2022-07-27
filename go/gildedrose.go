@@ -5,7 +5,12 @@ import (
 )
 
 const (
-	MAX_QUALITY = 50
+	maxQuality = 50
+	
+	agedBrie = "Aged Brie"
+	backstage = "Backstage passes to a TAFKAL80ETC concert"
+	sulfuras = "Sulfuras, Hand of Ragnaros"
+	conjuredPrefix = "Conjured"
 )
 
 type Item struct {
@@ -15,13 +20,13 @@ type Item struct {
 
 func UpdateQuality(items []*Item) {
 	for i := range items {
-		if items[i].Name == "Sulfuras, Hand of Ragnaros" {
+		if items[i].Name == sulfuras {
 			continue
 		}
+
+		items[i].SellIn--
 	
-		if strings.HasPrefix(items[i].Name, "Conjured") {
-			items[i].SellIn--
-			
+		if strings.HasPrefix(items[i].Name, conjuredPrefix) {
 			if items[i].Quality >= 2 {
 				items[i].Quality -= 2
 			} else {
@@ -31,24 +36,21 @@ func UpdateQuality(items []*Item) {
 			continue
 		}
 		
-		if items[i].Name == "Aged Brie" {
-			items[i].SellIn--
+		if items[i].Name == agedBrie {
 			items[i].Quality++
 
 			if items[i].SellIn < 0 {		
 				items[i].Quality++
 			}
 			
-			if items[i].Quality > MAX_QUALITY {
-				items[i].Quality = MAX_QUALITY
+			if items[i].Quality > maxQuality {
+				items[i].Quality = maxQuality
 			}
 
 			continue
 		}
 		
-		if items[i].Name == "Backstage passes to a TAFKAL80ETC concert" {
-			items[i].SellIn--
-			
+		if items[i].Name == backstage {
 			if items[i].SellIn < 0 {
 				items[i].Quality = 0
 			} else if items[i].SellIn <= 5 {
@@ -62,7 +64,6 @@ func UpdateQuality(items []*Item) {
 			continue
 		}
 		
-		items[i].SellIn--
 		items[i].Quality--
 		
 		if items[i].SellIn < 0 {
