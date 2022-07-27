@@ -31,19 +31,18 @@ func Test_Normal_Item(t *testing.T) {
 
 func Test_Aged_Brie(t *testing.T) {
 	iq := 20
-	maxQ := 50
 	var items = []*gildedrose.Item{
-		{"Aged Brie", 5, iq},
-		{"Aged Brie", 0, iq},
-		{"Aged Brie", 0, maxQ},
+		{gildedrose.AgedBrie, 5, iq},
+		{gildedrose.AgedBrie, 0, iq},
+		{gildedrose.AgedBrie, 0, gildedrose.MaxQuality},
 	}
 
 	gildedrose.UpdateQuality(items)
 	
 	expected := []gildedrose.Item{
-		{"Aged Brie", 4, iq + 1},
-		{"Aged Brie", -1, iq + 2},
-		{"Aged Brie", -1, maxQ},
+		{gildedrose.AgedBrie, 4, iq + 1},
+		{gildedrose.AgedBrie, -1, iq + 2},
+		{gildedrose.AgedBrie, -1, gildedrose.MaxQuality},
 	}
 	
 	for i := range items {
@@ -60,7 +59,7 @@ func Test_Sulfuras(t *testing.T) {
 	iq := 80
 	isn := 10
 	var items = []*gildedrose.Item{
-		{"Sulfuras, Hand of Ragnaros", isn, iq},
+		{gildedrose.Sulfuras, isn, iq},
 	}
 
 	gildedrose.UpdateQuality(items)
@@ -77,10 +76,10 @@ func Test_Sulfuras(t *testing.T) {
 func Test_Backstage(t *testing.T) {
 	iq := 30
 	var items = []*gildedrose.Item{
-		{"Backstage passes to a TAFKAL80ETC concert", 40, iq},
-		{"Backstage passes to a TAFKAL80ETC concert", 10, iq},
-		{"Backstage passes to a TAFKAL80ETC concert", 5, iq},
-		{"Backstage passes to a TAFKAL80ETC concert", 0, iq},
+		{gildedrose.Backstage, 40, iq},
+		{gildedrose.Backstage, 10, iq},
+		{gildedrose.Backstage, 5, iq},
+		{gildedrose.Backstage, 0, iq},
 	}
 
 	gildedrose.UpdateQuality(items)
@@ -102,9 +101,9 @@ func Test_Backstage(t *testing.T) {
 func Test_Conjured(t *testing.T) {
 	iq := 30
 	var items = []*gildedrose.Item{
-		{"Conjured wand", 40, iq},
-		{"Conjured bread", 10, iq},
-		{"Conjured beer", 0, 0},
+		{gildedrose.ConjuredPrefix + " wand", 40, iq},
+		{gildedrose.ConjuredPrefix + " bread", 10, iq},
+		{gildedrose.ConjuredPrefix + " beer", 0, 0},
 	}
 	
 	gildedrose.UpdateQuality(items)
