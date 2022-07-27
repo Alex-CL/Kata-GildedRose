@@ -3,4 +3,4 @@ This kata is cloned from [https://github.com/emilybache/GildedRose-Refactoring-K
 
 ## Running
 
-To see how to running kata and check test coverage, go to [https://github.com/emilybache/GildedRose-Refactoring-Kata/tree/main/go](https://github.com/emilybache/GildedRose-Refactoring-Kata/tree/main/go)
+To see how to running kata and check test coverage, go to [https://github.com/emilybache/GildedRose-Refactoring-Kata/blob/main/go/README.md](https://github.com/emilybache/GildedRose-Refactoring-Kata/blob/main/go/README.md)
