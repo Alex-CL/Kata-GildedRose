@@ -4,6 +4,10 @@ import (
 	"strings"
 )
 
+const (
+	MAX_QUALITY = 50
+)
+
 type Item struct {
 	Name            string
 	SellIn, Quality int
@@ -15,10 +19,10 @@ func UpdateQuality(items []*Item) {
 			continue
 		}
 	
-		if strings.Contains(items[i].Name, "Conjured") {
+		if strings.HasPrefix(items[i].Name, "Conjured") {
 			items[i].SellIn--
 			
-			if (items[i].Quality >= 2) {
+			if items[i].Quality >= 2 {
 				items[i].Quality -= 2
 			} else {
 				items[i].Quality = 0
@@ -35,8 +39,8 @@ func UpdateQuality(items []*Item) {
 				items[i].Quality++
 			}
 			
-			if items[i].Quality > 50 {
-				items[i].Quality = 50
+			if items[i].Quality > MAX_QUALITY {
+				items[i].Quality = MAX_QUALITY
 			}
 
 			continue
