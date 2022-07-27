@@ -3,7 +3,7 @@ package gildedrose_test
 import (
 	"testing"
 
-	"github.com/emilybache/gildedrose-refactoring-kata/gildedrose"
+	"github.com/alex-cl/kata-gildedrose/go"
 )
 
 func Test_Normal_Item(t *testing.T) {
