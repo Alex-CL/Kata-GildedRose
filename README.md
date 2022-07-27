@@ -1,5 +1,5 @@
 # GildedRose Kata
-This kata is cloned for [https://github.com/emilybache/GildedRose-Refactoring-Kata](https://github.com/emilybache/GildedRose-Refactoring-Kata)
+This kata is cloned from [https://github.com/emilybache/GildedRose-Refactoring-Kata](https://github.com/emilybache/GildedRose-Refactoring-Kata)
 
 ## Running
 
